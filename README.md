@@ -14,6 +14,25 @@
 
 > Connect your Sui wallet and start cleaning up unwanted NFTs in seconds!
 
+### 🎬 See It In Action
+
+<details>
+<summary><b>📸 Click to view demos</b></summary>
+
+#### Scanning & Burning NFTs
+
+![Scan and Burn](src/assets/gif/scan_burn.gif)
+
+#### Minting Test NFTs
+
+![Mint NFTs](src/assets/gif/mint.gif)
+
+#### Viewing History
+
+![History Tracking](src/assets/gif/history.gif)
+
+</details>
+
 ## 📖 Table of Contents
 
 - [Overview](#-overview)
