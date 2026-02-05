@@ -20,15 +20,15 @@
 
 <div align="center">
   <table width="100%">
-    <!-- 1. Transaction History (Full Width) -->
+    <!-- 1. NFT Burn - Main Feature (Full Width) -->
     <tr>
       <td colspan="2" align="center">
-        <h3>📊 Transaction History & Burn Tracking</h3>
-        <p>Track all your cleanup operations with comprehensive transaction history and blockchain verification.</p>
-        <img src="src/assets/gif/tx_history.gif" alt="Transaction History" style="max-width: 100%; width: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+        <h3>🗑️ NFT Scanner & Batch Cleanup - Core Feature</h3>
+        <p>Scan your wallet, select unwanted NFTs, and burn them all in a single transaction.</p>
+        <img src="src/assets/gif/burn_nft.gif" alt="NFT Burn Cleanup" style="max-width: 100%; width: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
       </td>
     </tr>
-    <!-- 2. Split View for NFT Minting & Price Changes -->
+    <!-- 2. Split View for Minting & History -->
     <tr>
       <td align="center" width="50%">
         <h3>🎨 Test NFT Minter</h3>
@@ -36,9 +36,9 @@
         <img src="src/assets/gif/mintnft.gif" alt="NFT Minting" style="max-width: 100%; width: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
       </td>
       <td align="center" width="50%">
-        <h3>🔍 NFT Scanner & Cleanup</h3>
-        <p>Scan, select, and burn unwanted NFTs.</p>
-        <img src="src/assets/gif/burn_nft.gif" alt="NFT Scanner" style="max-width: 100%; width: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+        <h3>📊 Transaction History</h3>
+        <p>Track cleanup operations with blockchain proof.</p>
+        <img src="src/assets/gif/tx_history.gif" alt="Transaction History" style="max-width: 100%; width: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
       </td>
     </tr>
   </table>
