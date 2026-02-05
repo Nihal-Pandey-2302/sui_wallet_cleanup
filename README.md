@@ -14,6 +14,8 @@
 
 > Connect your Sui wallet and start cleaning up unwanted NFTs in seconds!
 
+**📹 Video Demo**: Watch the full walkthrough → [YouTube Demo](https://youtu.be/njWfZwObzTA)
+
 ---
 
 ## 🎥 Showcase
