@@ -20,25 +20,25 @@
 
 <div align="center">
   <table width="100%">
-    <!-- 1. Wallet Scanning (Full Width) -->
+    <!-- 1. Transaction History (Full Width) -->
     <tr>
       <td colspan="2" align="center">
-        <h3>1. Automatic Wallet Scanning</h3>
-        <p>Instantly detects and displays all NFTs in your connected Sui wallet.</p>
-        <img src="src/assets/gif/scanning.gif" alt="Wallet Scanning" style="max-width: 100%; width: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+        <h3>📊 Transaction History & Burn Tracking</h3>
+        <p>Track all your cleanup operations with comprehensive transaction history and blockchain verification.</p>
+        <img src="src/assets/gif/tx_history.gif" alt="Transaction History" style="max-width: 100%; width: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
       </td>
     </tr>
-    <!-- 2. Split View for NFT Burning & History -->
+    <!-- 2. Split View for NFT Minting & Price Changes -->
     <tr>
       <td align="center" width="50%">
-        <h3>2. Batch NFT Burning</h3>
-        <p>Select multiple NFTs and burn them in a single transaction.</p>
-        <img src="src/assets/gif/burning.gif" alt="NFT Burning" style="max-width: 100%; width: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+        <h3>🎨 Test NFT Minter</h3>
+        <p>Mint test NFTs instantly for demos & testing.</p>
+        <img src="src/assets/gif/mintnft.gif" alt="NFT Minting" style="max-width: 100%; width: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
       </td>
       <td align="center" width="50%">
-        <h3>3. History Tracking</h3>
-        <p>View all your burn transactions with blockchain proof.</p>
-        <img src="src/assets/gif/history.gif" alt="History Tracking" style="max-width: 100%; width: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+        <h3>🔍 NFT Scanner & Cleanup</h3>
+        <p>Scan, select, and burn unwanted NFTs.</p>
+        <img src="src/assets/gif/nftpricechange.gif" alt="NFT Scanner" style="max-width: 100%; width: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
       </td>
     </tr>
   </table>
