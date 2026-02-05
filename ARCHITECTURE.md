@@ -27,49 +27,57 @@ Sui Wallet Cleanup is a client-side React application that interfaces with the S
 
 ### High-Level Architecture
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                     User's Browser                          │
-│  ┌───────────────────────────────────────────────────────┐  │
-│  │              React Application (Vite)                  │  │
-│  │  ┌─────────────┐  ┌──────────────┐  ┌──────────────┐ │  │
-│  │  │   Router    │  │  Components  │  │    Hooks     │ │  │
-│  │  │             │  │              │  │              │ │  │
-│  │  │  - Home     │  │  - Scanner   │  │  -useScanner │ │  │
-│  │  │  - Mint     │  │  - Minter    │  │  -useSign... │ │  │
-│  │  │  - History  │  │  - Navbar    │  │              │ │  │
-│  │  │  - Docs     │  │  - Cards     │  │              │ │  │
-│  │  └─────────────┘  └──────────────┘  └──────────────┘ │  │
-│  │                                                        │  │
-│  │  ┌───────────────────────────────────────────────┐   │  │
-│  │  │   State Management (@tanstack/react-query)    │   │  │
-│  │  └───────────────────────────────────────────────┘   │  │
-│  │                                                        │  │
-│  │  ┌───────────────────────────────────────────────┐   │  │
-│  │  │      Sui SDK (@mysten/dapp-kit)               │   │  │
-│  │  │  - WalletProvider                              │   │  │
-│  │  │  - SuiClientProvider                           │   │  │
-│  │  │  - Transaction Builder                         │   │  │
-│  │  └───────────────────────────────────────────────┘   │  │
-│  └────────────────────────────────────────────────────────┘  │
-│                           ↕                                  │
-│  ┌────────────────────────────────────────────────────────┐  │
-│  │         Wallet Extension (Sui Wallet/Ethos)            │  │
-│  └────────────────────────────────────────────────────────┘  │
-└─────────────────────────────────────────────────────────────┘
-                           ↕
-┌─────────────────────────────────────────────────────────────┐
-│                    Sui Blockchain Network                    │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      │
-│  │   Testnet    │  │   Mainnet    │  │   RPC Node   │      │
-│  └──────────────┘  └──────────────┘  └──────────────┘      │
-│                                                              │
-│  ┌──────────────────────────────────────────────────┐       │
-│  │         Smart Contracts (Move)                   │       │
-│  │  - NFT Minter (testnet_nft module)               │       │
-│  │  - Sui Framework (transfer, burn)                │       │
-│  └──────────────────────────────────────────────────┘       │
-└─────────────────────────────────────────────────────────────┘
+```mermaid
+graph TB
+    subgraph Browser["User's Browser"]
+        subgraph React["React Application (Vite)"]
+            Router[Router<br/>Home, Mint,<br/>History, Docs]
+            Components[Components<br/>Scanner, Minter,<br/>Navbar, Cards]
+            Hooks[Hooks<br/>useScanner<br/>useSignAndExecute]
+        end
+
+        subgraph State["State Management"]
+            RQ[@tanstack/react-query<br/>Server State]
+            LS[LocalStorage<br/>Burn History]
+        end
+
+        subgraph SDK["Sui SDK (@mysten/dapp-kit)"]
+            WP[WalletProvider]
+            SCP[SuiClientProvider]
+            TB[Transaction Builder]
+        end
+
+        Wallet[Wallet Extension<br/>Sui Wallet/Ethos]
+    end
+
+    subgraph Blockchain["Sui Blockchain Network"]
+        subgraph Networks["Networks"]
+            TN[Testnet]
+            MN[Mainnet]
+            RPC[RPC Node]
+        end
+
+        subgraph Contracts["Smart Contracts (Move)"]
+            NFTMinter[NFT Minter<br/>testnet_nft module]
+            SuiFramework[Sui Framework<br/>transfer, burn]
+        end
+    end
+
+    Router --> Components
+    Components --> Hooks
+    Hooks --> RQ
+    Hooks --> LS
+    Hooks --> SDK
+    SDK --> Wallet
+    Wallet -.->|Sign Txns| SDK
+    SDK --> RPC
+    RPC --> TN
+    RPC --> MN
+    SDK --> Contracts
+
+    style React fill:#646CFF,stroke:#4C51BF,color:#fff
+    style SDK fill:#4CA2FF,stroke:#2E7BC0,color:#fff
+    style Contracts fill:#10B981,stroke:#047857,color:#fff
 ```
 
 ## Component Architecture
@@ -207,91 +215,46 @@ function useScanner() {
 
 ### Object Scanning Flow
 
-```
-┌──────────┐
-│  Wallet  │
-│ Connect  │
-└────┬─────┘
-     │
-     ▼
-┌────────────────┐
-│  useScanner    │
-│  Hook Enabled  │
-└────┬───────────┘
-     │
-     ▼
-┌───────────────────┐
-│ Query Blockchain  │
-│ getOwnedObjects() │
-└────┬──────────────┘
-     │
-     ▼
-┌───────────────┐
-│   Pagination  │
-│  While Pages  │
-└────┬──────────┘
-     │
-     ▼
-┌──────────────┐
-│Filter Objects│
-│ (No Coins)   │
-└────┬─────────┘
-     │
-     ▼
-┌──────────────┐
-│Cache Results │
-│ React Query  │
-└────┬─────────┘
-     │
-     ▼
-┌──────────────┐
-│   Render     │
-│ ObjectCards  │
-└──────────────┘
+```mermaid
+flowchart TD
+    A[Wallet Connect] --> B[useScanner Hook Enabled]
+    B --> C[Query Blockchain<br/>getOwnedObjects]
+    C --> D{Has Next Page?}
+    D -->|Yes| E[Fetch Next Page]
+    E --> D
+    D -->|No| F[Filter Objects<br/>Exclude Coins]
+    F --> G[Cache Results<br/>React Query]
+    G --> H[Render ObjectCards]
+
+    style A fill:#4CA2FF,stroke:#2E7BC0,color:#fff
+    style H fill:#10B981,stroke:#047857,color:#fff
 ```
 
 ### Burn Transaction Flow
 
-```
-User Selects NFTs
-       │
-       ▼
-Click "Burn Selected"
-       │
-       ▼
-Confirmation Dialog
-       │
-   ┌───┴───┐
-   │Confirm│Cancel
-   │       └──────> Return
-   ▼
-Build Transaction
-   │
-   ├─> Create tx = new Transaction()
-   │
-   ├─> For each objectId:
-   │   tx.transferObjects([objectId], 0x0)
-   │
-   ▼
-Sign & Execute
-   │
-   ├─> Send to wallet
-   │
-   ├─> User approves
-   │
-   ├─> Submit to blockchain
-   │
-   ▼
-Handle Response
-   │
-   ├─> Success:
-   │   ├─> Save to BurnHistory
-   │   ├─> Show success state
-   │   ├─> Refetch objects
-   │   └─> Clear selection
-   │
-   └─> Error:
-       └─> Show error message
+```mermaid
+flowchart TD
+    A[User Selects NFTs] --> B[Click 'Burn Selected']
+    B --> C{Confirmation Dialog}
+    C -->|Cancel| Z[Return]
+    C -->|Confirm| D[Build Transaction]
+    D --> E[Create tx = new Transaction]
+    E --> F[For each objectId:<br/>tx.transferObjects to 0x0]
+    F --> G[Sign & Execute]
+    G --> H[Send to Wallet]
+    H --> I{User Approves?}
+    I -->|No| Z
+    I -->|Yes| J[Submit to Blockchain]
+    J --> K{Result}
+    K -->|Success| L[Save to BurnHistory]
+    L --> M[Show Success State]
+    M --> N[Refetch Objects]
+    N --> O[Clear Selection]
+    K -->|Error| P[Show Error Message]
+
+    style A fill:#646CFF,stroke:#4C51BF,color:#fff
+    style L fill:#10B981,stroke:#047857,color:#fff
+    style P fill:#EF4444,stroke:#DC2626,color:#fff
 ```
 
 ### State Management Strategy
@@ -431,32 +394,16 @@ Optimization Opportunities:
 
 ### Security Model
 
-```
-┌─────────────────────────────────────────┐
-│         User's Private Keys             │
-│     (Never leave wallet extension)      │
-└──────────────┬──────────────────────────┘
-               │
-               ▼
-┌─────────────────────────────────────────┐
-│      Wallet Extension Approval          │
-│   (Every transaction requires consent)  │
-└──────────────┬──────────────────────────┘
-               │
-               ▼
-┌─────────────────────────────────────────┐
-│       Our Application Layer             │
-│  - Read-only blockchain queries         │
-│  - Build unsigned transactions          │
-│  - No backend communication             │
-└──────────────┬──────────────────────────┘
-               │
-               ▼
-┌─────────────────────────────────────────┐
-│         Sui Blockchain                  │
-│  - Immutable transaction record         │
-│  - Verifiable on-chain                  │
-└─────────────────────────────────────────┘
+```mermaid
+graph TD
+    A[User's Private Keys<br/>Never leave wallet] --> B[Wallet Extension<br/>Approval Required]
+    B --> C[Application Layer<br/>- Read-only queries<br/>- Build unsigned txns<br/>- No backend]
+    C --> D[Sui Blockchain<br/>Immutable & Verifiable]
+
+    style A fill:#EF4444,stroke:#DC2626,color:#fff
+    style B fill:#F59E0B,stroke:#D97706,color:#fff
+    style C fill:#646CFF,stroke:#4C51BF,color:#fff
+    style D fill:#10B981,stroke:#047857,color:#fff
 ```
 
 ### Security Features
