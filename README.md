@@ -38,7 +38,7 @@
       <td align="center" width="50%">
         <h3>🔍 NFT Scanner & Cleanup</h3>
         <p>Scan, select, and burn unwanted NFTs.</p>
-        <img src="src/assets/gif/nftpricechange.gif" alt="NFT Scanner" style="max-width: 100%; width: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+        <img src="src/assets/gif/burn_nft.gif" alt="NFT Scanner" style="max-width: 100%; width: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
       </td>
     </tr>
   </table>
