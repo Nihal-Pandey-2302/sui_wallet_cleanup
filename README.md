@@ -77,6 +77,43 @@ A streamlined, secure application that:
 - ✅ Tracks cleanup history with blockchain proof
 - ✅ Provides testing tools for demonstrations
 
+## 🎯 RFP Roadmap Features (Grant-Funded Development)
+
+This project was submitted to the **Sui Wallet Cleanup App RFP**. The following features will be implemented with grant funding:
+
+### 🔍 Smart Classification System
+
+- [ ] Curated approved packages registry
+- [ ] Multi-factor risk scoring algorithm (Legit/Dubious/Scam)
+- [ ] Visual classification badges in UI
+- [ ] Package reputation analysis
+
+### 🗳️ Community Rating System
+
+- [ ] Decentralized voting smart contract (Move)
+- [ ] Thumbs-up/down mechanism
+- [ ] Reputation-weighted scoring
+- [ ] Public rating dashboard
+- [ ] Anti-manipulation measures
+
+### 💡 Action Suggestion Engine
+
+- [ ] Context-aware recommendations (Keep/Review/Burn)
+- [ ] Batch action workflows
+- [ ] Enhanced confirmation flows
+- [ ] Educational safety tooltips
+
+### 🏗️ Production Infrastructure
+
+- [ ] Smart contract security audit
+- [ ] Performance optimization for large wallets
+- [ ] Comprehensive integration documentation
+- [ ] Public API development
+
+**Current Status:** MVP deployed with core scanning and cleanup features ✅
+
+---
+
 ## ✨ Features
 
 ### 🔍 Smart Scanner
