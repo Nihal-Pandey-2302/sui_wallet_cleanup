@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Move build artifacts
+test_nft_minter/build/
+**/build/test_nft/

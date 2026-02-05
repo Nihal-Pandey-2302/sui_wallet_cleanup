@@ -8,6 +8,12 @@
 [![Vite](https://img.shields.io/badge/Vite-7.3-646CFF?logo=vite)](https://vitejs.dev/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
+## 🚀 Live Demo
+
+**Try it now**: [https://sui-wallet-cleanup.vercel.app/](https://sui-wallet-cleanup.vercel.app/)
+
+> Connect your Sui wallet and start cleaning up unwanted NFTs in seconds!
+
 ## 📖 Table of Contents
 
 - [Overview](#-overview)
