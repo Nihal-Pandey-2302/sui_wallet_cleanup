@@ -14,22 +14,37 @@
 
 > Connect your Sui wallet and start cleaning up unwanted NFTs in seconds!
 
-## 🎬 Feature Demos
+---
 
-### NFT Scanner in Action
+## 🎥 Showcase
 
-![Scanner Demo](./src/assets/gif/scanner.gif)
-_Automatically scans and displays all NFTs in your connected wallet_
+<div align="center">
+  <table width="100%">
+    <!-- 1. Wallet Scanning (Full Width) -->
+    <tr>
+      <td colspan="2" align="center">
+        <h3>1. Automatic Wallet Scanning</h3>
+        <p>Instantly detects and displays all NFTs in your connected Sui wallet.</p>
+        <img src="src/assets/gif/scanning.gif" alt="Wallet Scanning" style="max-width: 100%; width: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+      </td>
+    </tr>
+    <!-- 2. Split View for NFT Burning & History -->
+    <tr>
+      <td align="center" width="50%">
+        <h3>2. Batch NFT Burning</h3>
+        <p>Select multiple NFTs and burn them in a single transaction.</p>
+        <img src="src/assets/gif/burning.gif" alt="NFT Burning" style="max-width: 100%; width: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+      </td>
+      <td align="center" width="50%">
+        <h3>3. History Tracking</h3>
+        <p>View all your burn transactions with blockchain proof.</p>
+        <img src="src/assets/gif/history.gif" alt="History Tracking" style="max-width: 100%; width: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" />
+      </td>
+    </tr>
+  </table>
+</div>
 
-### Batch Burn Operation
-
-![Burn Demo](./src/assets/gif/burn.gif)
-_Select multiple NFTs and burn them in a single transaction_
-
-### Test NFT Minter
-
-![Minter Demo](./src/assets/gif/minter.gif)
-_Create test NFTs for demonstration purposes_
+---
 
 ## 📖 Table of Contents
 
