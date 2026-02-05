@@ -14,24 +14,22 @@
 
 > Connect your Sui wallet and start cleaning up unwanted NFTs in seconds!
 
-### 🎬 See It In Action
+## 🎬 Feature Demos
 
-<details>
-<summary><b>📸 Click to view demos</b></summary>
+### NFT Scanner in Action
 
-#### Scanning & Burning NFTs
+![Scanner Demo](./src/assets/gif/scanner.gif)
+_Automatically scans and displays all NFTs in your connected wallet_
 
-![Scan and Burn](src/assets/gif/scan_burn.gif)
+### Batch Burn Operation
 
-#### Minting Test NFTs
+![Burn Demo](./src/assets/gif/burn.gif)
+_Select multiple NFTs and burn them in a single transaction_
 
-![Mint NFTs](src/assets/gif/mint.gif)
+### Test NFT Minter
 
-#### Viewing History
-
-![History Tracking](src/assets/gif/history.gif)
-
-</details>
+![Minter Demo](./src/assets/gif/minter.gif)
+_Create test NFTs for demonstration purposes_
 
 ## 📖 Table of Contents
 
